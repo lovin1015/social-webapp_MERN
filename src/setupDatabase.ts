@@ -1,4 +1,4 @@
-import { redisConnection } from '@service/redis/redis.connecetion';
+import { redisConnection } from '@service/redis/redis.connection';
 import Logger from 'bunyan';
 import mongoose from 'mongoose';
 import { config } from './config';
