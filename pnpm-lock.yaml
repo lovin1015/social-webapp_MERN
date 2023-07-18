@@ -49,6 +49,7 @@ specifiers:
   jsonwebtoken: ^9.0.0
   lodash: ^4.17.21
   moment: ^2.29.4
+  mongodb: ^5.7.0
   mongoose: ^7.0.0
   nodemailer: ^6.9.1
   prettier: ^2.8.4
@@ -90,6 +91,7 @@ dependencies:
   jsonwebtoken: 9.0.1
   lodash: 4.17.21
   moment: 2.29.4
+  mongodb: 5.7.0
   mongoose: 7.3.4
   nodemailer: 6.9.3
   redis: 4.6.7
@@ -4294,6 +4296,34 @@ packages:
       snappy: ^7.2.2
     peerDependenciesMeta:
       '@aws-sdk/credential-providers':
+        optional: true
+      mongodb-client-encryption:
+        optional: true
+      snappy:
+        optional: true
+    dependencies:
+      bson: 5.4.0
+      mongodb-connection-string-url: 2.6.0
+      socks: 2.7.1
+    optionalDependencies:
+      saslprep: 1.0.3
+    dev: false
+
+  /mongodb/5.7.0:
+    resolution: {integrity: sha512-zm82Bq33QbqtxDf58fLWBwTjARK3NSvKYjyz997KSy6hpat0prjeX/kxjbPVyZY60XYPDNETaHkHJI2UCzSLuw==}
+    engines: {node: '>=14.20.1'}
+    peerDependencies:
+      '@aws-sdk/credential-providers': ^3.201.0
+      '@mongodb-js/zstd': ^1.1.0
+      kerberos: ^2.0.1
+      mongodb-client-encryption: '>=2.3.0 <3'
+      snappy: ^7.2.2
+    peerDependenciesMeta:
+      '@aws-sdk/credential-providers':
+        optional: true
+      '@mongodb-js/zstd':
+        optional: true
+      kerberos:
         optional: true
       mongodb-client-encryption:
         optional: true
