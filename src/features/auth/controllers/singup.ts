@@ -6,11 +6,13 @@ import { BadRequestError } from '@global/helpers/error-helpers';
 import { Helpers } from '@global/helpers/helpers';
 import { config } from '@root/config';
 import { authService } from '@service/db/auth.service';
+import { authQueue } from '@service/queues/auth.queue';
 import { UserCache } from '@service/redis/user.cache';
 import { IUserDocument } from '@user/interfaces/user.interface';
 import { UploadApiResponse } from 'cloudinary';
 import { Request, Response } from 'express';
 import httpStatus from 'http-status-codes';
+import { omit } from 'lodash';
 import { ObjectId } from 'mongodb';
 
 const userCache: UserCache = new UserCache();
@@ -50,6 +52,14 @@ export class SignUp {
     );
     userDataForCache.profilePicture = `https://res.cloudinary.com/${config.CLOUD_NAME}/image/upload/v${result.version}/${userObjectId}`;
     await userCache.saveUserToCache(`${userObjectId}`, uId, userDataForCache);
+    omit(userDataForCache, [
+      'uId',
+      'username',
+      'password',
+      'email',
+      'avatarColor',
+    ]);
+    authQueue.addAuthUserJob('addAuthUserToDB', { value: userDataForCache });
     return res
       .status(httpStatus.CREATED)
       .json({ message: 'User created successfully', authData });
