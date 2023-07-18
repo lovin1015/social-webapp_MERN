@@ -61,7 +61,7 @@ export class SignUp {
       'email',
       'avatarColor',
     ]);
-    authQueue.addAuthUserJob('addAuthUserToDB', { value: userDataForCache });
+    authQueue.addAuthUserJob('addAuthUserToDB', { value: authData });
     userQueue.addUserJob('addUserToDB', { value: userDataForCache });
     const token = SignUp.prototype.signToken(authData, userObjectId);
     req.session = { jwt: token };
