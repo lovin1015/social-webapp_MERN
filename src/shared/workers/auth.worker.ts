@@ -5,7 +5,7 @@ class AuthWorker {
   async addAuthUserToDB(job: Job, done: DoneCallback): Promise<void> {
     try {
       const { value } = job.data;
-      await authService.createUser(value);
+      await authService.createAuthUser(value);
       job.progress(100);
       done(null, job.data);
     } catch (error) {
