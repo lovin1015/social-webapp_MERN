@@ -8,8 +8,8 @@ const log: Logger = config.createLogger('EmailWorker');
 class EmailWorker {
   public async addNotificationEmail(job: Job, cb: DoneCallback): Promise<void> {
     try {
-      const { template, recieverEmail, subject } = job.data;
-      await mailTransport.sendEmail(recieverEmail, subject, template);
+      const { template, receiverEmail, subject } = job.data;
+      await mailTransport.sendEmail(receiverEmail, subject, template);
       job.progress(100);
       cb(null, job.data);
     } catch (error) {
