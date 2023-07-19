@@ -7,7 +7,6 @@ import { IUserDocument } from '@user/interfaces/user.interface';
 import { Request, Response } from 'express';
 import HTTP_STATUS from 'http-status-codes';
 import JWT from 'jsonwebtoken';
-
 export class SignIn {
   public async read(req: Request, res: Response) {
     const { username, password } = req.body;
@@ -26,7 +25,6 @@ export class SignIn {
     const user: IUserDocument = await userService.getUserByAuthId(
       `${existingUser._id}`
     );
-    console.log({ existingUser });
     const userJwt: string = JWT.sign(
       {
         userId: user._id,
