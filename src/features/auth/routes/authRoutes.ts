@@ -1,4 +1,5 @@
 import { SignIn } from '@auth/controllers/signin';
+import { SignOut } from '@auth/controllers/signout';
 import { SignUp } from '@auth/controllers/singup';
 import express, { Router } from 'express';
 
@@ -19,7 +20,7 @@ class AuthRoutes {
   }
 
   public signoutRoute(): Router {
-    // this.router.get('/signout', SignOut.prototype.update);
+    this.router.get('/signout', SignOut.prototype.update);
 
     return this.router;
   }
