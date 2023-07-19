@@ -90,7 +90,7 @@ export class SignUp {
     return {
       ...data,
       username: Helpers.firstLetterUppercase(data.username),
-      email: Helpers.firstLetterUppercase(data.email),
+      email: data.email,
       createdAt: new Date(),
     } as unknown as IAuthDocument;
   }
