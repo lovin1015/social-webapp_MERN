@@ -1,4 +1,5 @@
 import { createAdapter } from '@socket.io/redis-adapter';
+import { SocketIOPostHandler } from '@socket/post';
 import Logger from 'bunyan';
 import compression from 'compression';
 import cookieSession from 'cookie-session';
@@ -123,5 +124,8 @@ export class ChattyServer {
       log.info(`http.Server running on port ${SERVER_PORT}`);
     });
   }
-  private socketIOConnections(socketIO: Server) {}
+  private async socketIOConnections(socketIO: Server) {
+    const postSocketHandler = new SocketIOPostHandler(socketIO);
+    postSocketHandler.listen();
+  }
 }
