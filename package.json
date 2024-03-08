@@ -23,7 +23,7 @@
     "typescript",
     "mongo"
   ],
-  "author": "Kaung Myat Han",
+  "author": "Lovin Hood",
   "license": "ISC",
   "dependencies": {
     "@bull-board/express": "^4.12.1",
